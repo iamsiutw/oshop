@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../../shared/service/auth.service';
 import {OrderService} from '../../../shared/service/order.service';
 import {ShoppingCart} from '../../../shared/models/shopping-cart';
+import {Shipping} from '../../../shared/models/shipping';
 
 @Component({
   selector: 'shipping-form',
@@ -13,7 +14,7 @@ import {ShoppingCart} from '../../../shared/models/shopping-cart';
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;
-  shipping = {};
+  shipping: any = {};
   userId: string;
   Subscription: Subscription;
   constructor(

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import {Observable, of} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {AppUser} from '../models/app-user';
 import {UserService} from './user.service';
@@ -15,7 +15,8 @@ export class AuthService {
   constructor(
     private userService: UserService,
     private afAuth: AngularFireAuth,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
     this.user$ = afAuth.authState;
   }
 
