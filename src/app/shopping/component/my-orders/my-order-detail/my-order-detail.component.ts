@@ -19,7 +19,7 @@ export class MyOrderDetailComponent {
     private orderService: OrderService) {
     this.orderId = this.route.snapshot.paramMap.get('orderId');
     this.order$ = this.orderService.getOrderItems(this.orderId).valueChanges();
-    console.log(this.order$);
-    this.orderService.getOrderDate(this.orderId).valueChanges().subscribe(orderDate => this.orderDatePlaced = orderDate[0]);
+    this.orderDatePlaced = this.orderService.getOrderDate(this.orderId).valueChanges();
+    console.log(this.orderDatePlaced);
   }
 }

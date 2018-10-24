@@ -1,5 +1,5 @@
-<div>
-  <p>訂單編號：{{orderDatePlaced}}</p>
+<div *ngIf="orderDatePlaced | async as orderDate">
+  <p class="font-weight-bold">訂單編號：{{orderDate.datePlaced}}</p>
 </div>
 
 <table class="table table-hover">

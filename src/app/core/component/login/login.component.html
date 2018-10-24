@@ -3,11 +3,11 @@
     <div class="col"></div>
     <div class="col">
       <div class="card text-center">
-        <div class="card-header">
+        <div class="card-header font-weight-bold">
           請選擇登入方式
         </div>
         <div class="card-body">
-          <button mat-raised-button (click)="login()" class="btn-block"><i class="fab fa-google fa-2x"></i> GOOGLE</button>
+          <button mat-raised-button (click)="login()" class="btn-block"><i class="fab fa-google fa-2x"></i>   GOOGLE</button>
           <br>
           <br>
           <button mat-raised-button color="primary" class="btn-block"><i class="fab fa-facebook-square fa-2x"></i> FACEBOOK</button>
@@ -20,9 +20,12 @@
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Password" required>
           </mat-form-field>
-          <button mat-raised-button color="primary" class="float-left">Sign In</button>
+          <br>
+          <button mat-raised-button color="primary" class="float-left btn-block"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+          <br>
           Or
-          <button mat-raised-button class="float-right">Sign Up</button>
+          <br>
+          <button mat-raised-button class="float-right btn-block"><i class="fas fa-user-plus"></i> Sign Up</button>
         </div>
       </div>
     </div>

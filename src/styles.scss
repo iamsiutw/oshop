@@ -13,3 +13,7 @@ body {
 
 html, body { height: 100%;}
 body { margin: 0; font-family: 'Microsoft JhengHei', sans-serif; }
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}

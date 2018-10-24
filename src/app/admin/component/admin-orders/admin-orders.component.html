@@ -1,25 +1,25 @@
 <h1><i class="fas fa-tasks"></i> 訂單管理</h1>
-<table class="table">
+<table class="table table-sm">
   <thead>
     <tr>
-      <th>訂單編號</th>
-      <th>客戶姓名</th>
-      <th>下單日期</th>
-      <th>出貨地址</th>
-      <th>處理狀態</th>
-      <th></th>
+      <th scope="col">訂單編號</th>
+      <th scope="col">客戶姓名</th>
+      <th scope="col">下單日期</th>
+      <th scope="col">出貨地址</th>
+      <th scope="col">連絡電話</th>
+      <th scope="col">處理狀態</th>
+      <th scope="col"></th>
     </tr>
   </thead> 
-  <tbody class="align-middle">
+  <tbody class="">
     <tr *ngFor="let order of orders$ | async">
       <td><a [routerLink]="['/admin/orders/', order.key]">{{ order.datePlaced }}</a></td>
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date: 'short'}}</td>
       <td>{{ order.shipping.addressLine1}}{{order.shipping.addressLine2}}</td>
-      <td>
-        <p *ngIf="order.ship">已出貨</p>
-        <p *ngIf="!order.ship">未出貨</p>
-      </td>
+      <td>{{ order.shipping.phone}}</td>
+      <td *ngIf="order.ship">已出貨</td>
+      <td *ngIf="!order.ship">未出貨</td>
       <td><mat-slide-toggle color="primary" [checked]="order.ship" (change)="changeStatus($event, order.key)"></mat-slide-toggle></td>
     </tr>
   </tbody> 

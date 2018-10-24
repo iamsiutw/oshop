@@ -12,7 +12,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
-  navbarCollapsed: true;
+  navbarCollapsed: boolean;
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
