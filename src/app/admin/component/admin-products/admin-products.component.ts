@@ -9,14 +9,17 @@ import {Subscription} from 'rxjs';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products;
-  filteredProducts: any[];
+  dataSource: any[];
   subscription: Subscription;
+  displayedColumns: string[] = ['title', 'category', 'price', 'edit'];
   constructor(private productService: ProductService) {
-    this.subscription = this.productService.getAll().subscribe(products => this.filteredProducts = this.products = products);
+    this.subscription = this.productService.getAll().subscribe(
+      products => this.dataSource = this.products = products);
   }
   filter(query: string) {
-    this.filteredProducts = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
+    this.dataSource = (query) ?
+      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase()) ||
+        p.category.toLowerCase().includes(query.toLowerCase())) :
       this.products;
   }
   ngOnDestroy() {

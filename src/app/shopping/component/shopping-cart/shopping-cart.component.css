@@ -4,3 +4,9 @@
   border-radius: 100%;
   background-size: cover;
 }
+.btn-sm {
+  float: right;
+}
+td {
+  align-content: center;
+}

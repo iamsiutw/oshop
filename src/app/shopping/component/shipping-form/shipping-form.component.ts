@@ -16,6 +16,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;
   shipping: any = {};
   userId: string;
+  ship: any;
   Subscription: Subscription;
   constructor(
     private router: Router,
@@ -29,7 +30,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     this.Subscription.unsubscribe();
   }
   async placeOrder() {
-    let order = new Order(this.userId, this.shipping, this.cart);
+    let order = new Order(this.userId, this.shipping, this.cart, this.ship);
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['order-success', result.key]);
   }

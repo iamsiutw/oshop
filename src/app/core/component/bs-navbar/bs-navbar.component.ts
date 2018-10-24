@@ -4,6 +4,7 @@ import {AppUser} from '../../../shared/models/app-user';
 import {ShoppingCartService} from '../../../shared/service/shopping-cart.service';
 import {ShoppingCart} from '../../../shared/models/shopping-cart';
 import {Observable} from 'rxjs';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'bs-navbar',
@@ -11,7 +12,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
-  navbarCollapsed = true;
+  navbarCollapsed: true;
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {

@@ -7,11 +7,14 @@ import {AdminAuthGuard} from './services/admin-auth-guard.service';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {AuthGuard} from '../shared/service/auth-guard.service';
+import {SharedMaterialModule} from '../shared/shared-material/shared-material.module';
+import {OrdersManageComponent} from './component/orders-manage/orders-manage.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    SharedMaterialModule,
     RouterModule.forChild([
       {
         path: 'admin/products/new',
@@ -32,13 +35,19 @@ import {AuthGuard} from '../shared/service/auth-guard.service';
         path: 'admin/orders',
         component: AdminOrdersComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
+      },
+      {
+        path: 'admin/orders/:orderId',
+        component: OrdersManageComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
       }
     ])
   ],
   declarations: [
     ProductFormComponent,
     AdminProductsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    OrdersManageComponent,
   ],
   providers: [
     AdminAuthGuard

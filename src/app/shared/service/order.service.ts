@@ -1,6 +1,8 @@
 import { ShoppingCartService } from './shopping-cart.service';
 import { AngularFireDatabase} from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import {map} from 'rxjs/operators';
+import {st} from '@angular/core/src/render3';
 
 @Injectable()
 export class OrderService {
@@ -14,11 +16,28 @@ export class OrderService {
   }
 
   getOrders() {
-    return this.db.list('/orders');
+    return this.db.list('/orders').snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
   }
 
   getOrdersByUser(userId: string) {
     return this.db.list('/orders',
-        ref => ref.orderByChild('userId').equalTo(userId));
+        ref => ref.orderByChild('userId').equalTo(userId)).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
+  }
+  getOrderItems(orderId) {
+    return this.db.object('/orders/' + orderId + '/items');
+  }
+  getOrderDate(orderId) {
+    return this.db.object('/orders/' + orderId);
+  }
+  changeShipStatus(status, orderId) {
+    this.getOrderDate(orderId).update({ship: status});
   }
 }

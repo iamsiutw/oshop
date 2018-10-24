@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AdminOrdersComponent {
   orders$;
-
   constructor(private orderService: OrderService) {
-    this.orders$ = orderService.getOrders().valueChanges();
+    this.orders$ = orderService.getOrders();
+  }
+  changeStatus(event, orderId) {
+    this.orderService.changeShipStatus(event.checked, orderId);
   }
 }

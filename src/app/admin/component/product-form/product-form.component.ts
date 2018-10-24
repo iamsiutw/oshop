@@ -12,7 +12,7 @@ import {Product} from '../../../shared/models/product';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
-  product: Product;
+  product: any = {};
   id;
   constructor(
     private route: ActivatedRoute,

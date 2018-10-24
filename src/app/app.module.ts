@@ -11,6 +11,8 @@ import {AdminModule} from './admin/admin.module';
 import {ShoppingModule} from './shopping/shopping.module';
 import {ProductsComponent} from './shopping/component/products/products.component';
 import {CoreModule} from './core/core.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SharedMaterialModule} from './shared/shared-material/shared-material.module';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import {CoreModule} from './core/core.module';
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
       {path: 'login', component: LoginComponent}
-    ])
+    ]),
+    BrowserAnimationsModule,
+    SharedMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

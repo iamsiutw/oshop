@@ -12,19 +12,26 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AuthGuard} from '../shared/service/auth-guard.service';
 import {SharedModule} from '../shared/shared.module';
+import {SharedMaterialModule} from '../shared/shared-material/shared-material.module';
+import {MyOrderDetailComponent} from './component/my-orders/my-order-detail/my-order-detail.component';
+import {MergePipe} from './component/my-orders/merge.pipe';
+
 
 @NgModule({
   imports: [
     SharedModule,
+    SharedMaterialModule,
     RouterModule.forChild([
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]}
+      {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
+      {path: 'my/orders/:orderId', component: MyOrderDetailComponent, canActivate: [AuthGuard]}
     ])
   ],
   declarations: [
+    MergePipe,
     ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,
@@ -32,7 +39,8 @@ import {SharedModule} from '../shared/shared.module';
     MyOrdersComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    MyOrderDetailComponent
   ]
 })
 export class ShoppingModule { }
