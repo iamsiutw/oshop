@@ -14,7 +14,7 @@ import {Shipping} from '../../../shared/models/shipping';
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;
-  shipping: any = {};
+  shipping: any = { };
   userId: string;
   ship: any;
   Subscription: Subscription;

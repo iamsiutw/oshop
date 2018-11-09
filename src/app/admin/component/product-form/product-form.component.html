@@ -3,29 +3,29 @@
   <div class="col-md-6">
     <form #f="ngForm" (ngSubmit)="save(f.value)">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">商品名稱</label>
         <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-          Title is required.
+          請輸入商品名稱
         </div>
       </div>
 
       <div class="form-group">
-        <label for="price">Price</label>
-        <div class="input-group">
+        <label for="price">售價</label>
+      <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
           <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
         </div>
         <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-          <div *ngIf="price.errors.required">Price is required.</div>
-          <div *ngIf="price.errors.min">Price should be 0 or higher.</div>
+          <div *ngIf="price.errors.required">請輸入售價</div>
+          <div *ngIf="price.errors.min">售價不符格式</div>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="category">Category</label>
+        <label for="category">商品類別</label>
         <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" type="text" class="form-control" required>
           <option value=""></option>
           <option *ngFor="let c of categories$ | async" [value]="c.key">
@@ -33,21 +33,21 @@
           </option>
         </select>
         <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-          Category is required.
+          請選擇商品類別
         </div>
       </div>
 
       <div class="form-group">
-        <label for="imageUrl">Image URL</label>
+        <label for="imageUrl">商品照片URL</label>
         <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
         <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-          <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
-          <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
+          <div *ngIf="imageUrl.errors.required">請輸入照片連結</div>
+          <div *ngIf="imageUrl.errors.url">連結不符格式</div>
         </div>
       </div>
 
-      <button class="btn btn-primary">Save</button>&nbsp;
-      <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+      <button class="btn btn-primary" [disabled]="!f.valid">儲存</button>&nbsp;
+      <button type="button" (click)="delete()" class="btn btn-danger" [disabled]="!f.valid">刪除</button>
     </form>
   </div>
   <div class="col-md-6">

@@ -12,7 +12,7 @@ import {Product} from '../../../shared/models/product';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
-  product: any = {};
+  product: any = { };
   id;
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +32,7 @@ export class ProductFormComponent implements OnInit {
     this.router.navigate(['admin/products']);
   }
   delete() {
-    if (!confirm('Are you sure you want to delete this product?')) return;
+    if (!confirm('你確定要刪除這項產品嗎?')) return;
     this.productService.delete(this.id);
     this.router.navigate(['admin/products']);
   }

@@ -1,7 +1,7 @@
-<form #f="ngForm">
+<ng-form #f="ngForm">
   <div class="form-group">
-    <label for="">訂購人</label>
-    <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
+    <label for="name">訂購人</label>
+    <input id="name" #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
     <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
       <div *ngIf="name.errors.required">請輸入訂購人</div>
     </div>
@@ -31,4 +31,4 @@
     [disabled]="!f.valid"
     (click)="placeOrder()"
     class="btn btn-primary float-right">確認訂購</button>
-</form>
+</ng-form>
